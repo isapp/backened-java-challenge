@@ -4,7 +4,7 @@
 - Limit the response to ten titles. 
 - This exercise isn't meant to take a long time, so don't spend more than an hour or so on it (unless you really want to). 
 - Before you start please fork this repo. As your are working on your solution try to commit the changes in small blocks. 
-- When you are finished, please write a short paragraph (or some bullet points) describing what you perceive to be the pros and cons of your approach, and any alternatives you considered and add yo your PR. We will not be judging your writing style or grammar.
+- When you are finished, please write a short paragraph (or some bullet points) describing what you perceive to be the pros and cons of your approach plus any alternatives you considered, and add this to your PR. We will not be judging your writing style or grammar.
 
 
 For example:
