@@ -48,20 +48,16 @@ public class FlickrConnectionService
 			{
 			item.put("title", getItem.get("title").toString());
 			}
-			
 			if(getItem.has("id"))
 			{
 			//Get the Photo Id from the response.
 			String photoid=getItem.get("id").toString();
-			
 			//Now Get the Photo Size Details using Flickr Size API.
 			JSONObject sizeSearchResult=flickerClient.RestGetJson(connectionInfo.GetFlickrImageSizeURL(photoid)).getJSONObject("sizes");
-			
 			item.append("size", sizeSearchResult.get("size"));
 			}
 			flickrImageSearchResponse.put(i, item);	
 		}
-		
 		}
 		
 		}
