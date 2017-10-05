@@ -13,8 +13,8 @@ import com.isapp.challenge.service.FlickrConnectionService;
 @EnableAutoConfiguration
 public class FlickrSearch {
 
-    @RequestMapping("/flickr")
-    Map<String,Object> search(@RequestParam(value="search", defaultValue=" ") String searchPattern) 
+    @RequestMapping("/images")
+    Map<String,Object> search(@RequestParam(value="query", defaultValue=" ") String searchPattern) 
     {
     	FlickrConnectionService serviceInstance=new FlickrConnectionService();
     	JSONObject result=new JSONObject();
