@@ -22,8 +22,15 @@ public class FlickrConnectionService
 	{
 		
 		//Get the images based on search query parameter.
-		JSONObject imageSearchResult=flickerClient.RestGetJson(connectionInfo.GetFlickrSearchImageURL(searchKeyword)).getJSONObject("photos");
+		JSONObject imageSearchResults=flickerClient.RestGetJson(connectionInfo.GetFlickrSearchImageURL(searchKeyword));
+
+		if(imageSearchResults.has("photos"))
+		{
 		
+		JSONObject imageSearchResult= imageSearchResults.getJSONObject("photos");
+		
+		if(imageSearchResult.has("photo"))
+		{
 		//Get all photo ids and titles from the response string.
 		JSONArray listOfImages=imageSearchResult.getJSONArray("photo");
 		
@@ -37,8 +44,13 @@ public class FlickrConnectionService
 		{
 			JSONObject getItem = listOfImages.getJSONObject(i);
 			JSONObject item=new JSONObject();
+			if(getItem.has("title"))
+			{
 			item.put("title", getItem.get("title").toString());
+			}
 			
+			if(getItem.has("id"))
+			{
 			//Get the Photo Id from the response.
 			String photoid=getItem.get("id").toString();
 			
@@ -46,8 +58,15 @@ public class FlickrConnectionService
 			JSONObject sizeSearchResult=flickerClient.RestGetJson(connectionInfo.GetFlickrImageSizeURL(photoid)).getJSONObject("sizes");
 			
 			item.append("size", sizeSearchResult.get("size"));
+			}
 			flickrImageSearchResponse.put(i, item);	
 		}
+		
+		}
+		
+		}
+		
+		
 		return flickrImageSearchResponse;
 	} 
 }
