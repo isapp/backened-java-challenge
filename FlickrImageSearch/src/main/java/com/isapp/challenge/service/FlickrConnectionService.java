@@ -54,7 +54,36 @@ public class FlickrConnectionService
 			String photoid=getItem.get("id").toString();
 			//Now Get the Photo Size Details using Flickr Size API.
 			JSONObject sizeSearchResult=flickerClient.RestGetJson(connectionInfo.GetFlickrImageSizeURL(photoid)).getJSONObject("sizes");
-			item.append("size", sizeSearchResult.get("size"));
+			
+			
+			if(sizeSearchResult.has("size"))
+			{
+				
+			JSONArray sizeArray=sizeSearchResult.getJSONArray("size");
+			
+			System.out.println("Array");
+			System.out.println(sizeArray);
+
+			for(int a=0;a<sizeArray.length();a++)
+			{
+				JSONObject temp=sizeArray.getJSONObject(a);
+				System.out.println("SIngle Unit");
+				System.out.println(temp);
+				
+			//Get Width Height and URLs.
+			if(temp.has("width") && temp.has("height") && temp.has("url"))
+			{
+				JSONObject urlInfo=new JSONObject();
+				urlInfo.put("url", temp.get("url"));
+				urlInfo.put("width", temp.get("width"));
+				urlInfo.put("height", temp.get("height"));
+				item.append("urls", urlInfo);	
+				
+			}
+			}
+			}
+			
+			
 			}
 			flickrImageSearchResponse.put(i, item);	
 		}
