@@ -1,0 +1,12 @@
+package com.flickr.project.facade.rest;
+
+import org.springframework.web.client.RestTemplate;
+
+public abstract class AbstractRestfulClient {
+	protected RestTemplate _restTemplate;
+	
+	public AbstractRestfulClient()
+	{
+		_restTemplate = new RestTemplate();
+	}
+}

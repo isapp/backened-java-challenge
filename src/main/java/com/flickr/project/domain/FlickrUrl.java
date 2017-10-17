@@ -1,5 +1,8 @@
 package com.flickr.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FlickrUrl {
 	private int width, height;
 	private String url;

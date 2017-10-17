@@ -1,5 +1,8 @@
 package com.flickr.project.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class FlickrSearchResponse {
 	private String stat;
 	private Photos photos;
