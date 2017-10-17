@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.flickr.project.domain.FlickrImageSize;
 import com.flickr.project.domain.FlickrSearchResponse;
+import com.flickr.project.domain.FlickrSizeResponse;
 import com.flickr.project.domain.Photo;
 import com.flickr.project.facade.rest.IRestfulClient;
 
@@ -25,7 +26,9 @@ public class CoreEngine implements ICoreEngine{
 
 	@Override
 	public List<FlickrImageSize> getSizeInfo(String id) {
-		return _client.size(id);
+		FlickrSizeResponse response = _client.size(id);
+		
+		return response.getSizes().getSize();
 	}
 
 }

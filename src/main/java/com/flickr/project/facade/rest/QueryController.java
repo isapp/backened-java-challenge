@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.flickr.project.domain.FlickrImageSize;
 import com.flickr.project.domain.Photo;
 import com.flickr.project.domain.QueryResponse;
 import com.flickr.project.engine.ICoreEngine;
@@ -29,6 +30,22 @@ public class QueryController {
 		
 		List<Photo> photoList = _coreEngine.searchFlickr(search);
 		System.out.println(photoList);
+		
+		for(Photo photo : photoList)
+		{
+			List<FlickrImageSize> size = _coreEngine.getSizeInfo(photo.getId());
+			QueryResponse response = new QueryResponse(photo.getTitle());
+			for(FlickrImageSize sizeInfo : size)
+			{
+				response.addFlickrUrl(sizeInfo.getUrl(), 
+									sizeInfo.getWidth(), 
+									sizeInfo.getHeight());
+			}
+			result.add(response);
+			
+		}
+		
+		System.out.println(result);
 		return result;
 	}
 }

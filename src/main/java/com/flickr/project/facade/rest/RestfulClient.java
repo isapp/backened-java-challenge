@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.flickr.project.domain.FlickrImageSize;
 import com.flickr.project.domain.FlickrSearchResponse;
+import com.flickr.project.domain.FlickrSizeResponse;
 import com.flickr.project.domain.Photo;
 
 @Service
@@ -27,9 +28,13 @@ public class RestfulClient implements IRestfulClient{
 	private String _sizeMethod = "flickr.photos.size";
 	
 	@Override
-	public List<FlickrImageSize> size(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public FlickrSizeResponse size(String id) {
+		String url = "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=14fbe823601c3249f936eb3ca46fcc51&photo_id=" + id + "&format=json&nojsoncallback=1";
+		FlickrSizeResponse response = _restTemplate.getForObject(url, FlickrSizeResponse.class);
+		
+		System.out.println(response);
+		
+		return response;
 	}
 
 	@Override
