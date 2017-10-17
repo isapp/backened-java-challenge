@@ -2,6 +2,11 @@ package com.flickr.project.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * @since 1.0
+ * @author raysmets
+ * Class to map to Flickr's search method response.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FlickrSearchResponse {
 	private String stat;

@@ -22,7 +22,7 @@ public class CoreEngine implements ICoreEngine{
 	public List<Photo> searchFlickr(String text) {
 		FlickrSearchResponse response = _client.search(text); 
 		
-		if(response == null) 
+		if(response == null || response.getPhotos() == null) 
 		{
 			return new ArrayList<Photo>();
 		}
@@ -34,7 +34,7 @@ public class CoreEngine implements ICoreEngine{
 	public List<FlickrImageSize> getSizeInfo(String id) {
 		FlickrSizeResponse response = _client.size(id);
 		
-		if(response == null)
+		if(response == null || response.getSizes() == null)
 		{
 			return new ArrayList<FlickrImageSize>();
 		}

@@ -20,16 +20,17 @@ public class QueryController {
 	@Autowired
 	private ICoreEngine _coreEngine;
 	
+	/**
+	 * @since 1.0
+	 * @param search
+	 * @return List of {@QueryResponse}
+	 */
 	@RequestMapping(value = "/image", method = RequestMethod.GET, produces = "application/json")
 	public List<QueryResponse> queryFlickr(@RequestParam(value="search", defaultValue="BallmerPeak") final String search)
 	{
 		List<QueryResponse> result = new ArrayList<QueryResponse>();
 		
-		//use _coreEngine to get results
-		System.out.println("querying for " + search);
-		
 		List<Photo> photoList = _coreEngine.searchFlickr(search);
-		System.out.println(photoList);
 		
 		for(Photo photo : photoList)
 		{
@@ -45,7 +46,6 @@ public class QueryController {
 			
 		}
 		
-		System.out.println(result);
 		return result;
 	}
 }

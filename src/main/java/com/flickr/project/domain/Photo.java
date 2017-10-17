@@ -2,6 +2,11 @@ package com.flickr.project.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * @since 1.0
+ * @author raysmets
+ * Class to hold relevant photo information.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Photo {
 	private String id;

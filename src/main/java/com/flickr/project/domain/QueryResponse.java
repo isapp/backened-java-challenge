@@ -3,6 +3,11 @@ package com.flickr.project.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @since 1.0
+ * @author raysmets
+ * Class holding relevant query result information. 
+ */
 public class QueryResponse {
 	private String title;
 	private List<FlickrUrl> urls;

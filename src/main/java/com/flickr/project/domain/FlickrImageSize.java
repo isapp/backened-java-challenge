@@ -2,6 +2,11 @@ package com.flickr.project.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * @since 1.0
+ * @author raysmets
+ * Class to hold image size information with corresponding urls.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FlickrImageSize {
 	private int width;

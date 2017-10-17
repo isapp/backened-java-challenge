@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Photos {
 	private int page, pages, perpage, total;
 	private List<Photo> photo;
+	
 	public int getPage() {
 		return page;
 	}

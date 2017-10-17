@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class FlickrSizesResponse {
+	
 	private List<FlickrImageSize> size;
 	private int canblog;
 	private int canprint;
