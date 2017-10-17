@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.flickr.project.domain.FlickrImageSize;
+import com.flickr.project.domain.FlickrSearchResponse;
 import com.flickr.project.domain.Photo;
 import com.flickr.project.facade.rest.IRestfulClient;
 
@@ -17,14 +18,14 @@ public class CoreEngine implements ICoreEngine{
 	
 	@Override
 	public List<Photo> searchFlickr(String text) {
-		// TODO Auto-generated method stub
-		return null;
+		FlickrSearchResponse response = _client.search(text); 
+		
+		return response.getPhotos().getPhoto();
 	}
 
 	@Override
 	public List<FlickrImageSize> getSizeInfo(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return _client.size(id);
 	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.flickr.project.domain.Photo;
 import com.flickr.project.domain.QueryResponse;
 import com.flickr.project.engine.ICoreEngine;
 
@@ -26,6 +27,8 @@ public class QueryController {
 		//use _coreEngine to get results
 		System.out.println("querying for " + search);
 		
+		List<Photo> photoList = _coreEngine.searchFlickr(search);
+		System.out.println(photoList);
 		return result;
 	}
 }
